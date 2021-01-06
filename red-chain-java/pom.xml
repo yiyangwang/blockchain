@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.1.6.RELEASE</version>
+      <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.yiyang.chain</groupId>
+    <artifactId>red-chain-java</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>red-chain-java</name>
+    <description>Filecoin Wallet</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <swagger.version>2.9.2</swagger.version>
+  </properties>
+
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+      <version>2.1.6.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.java-websocket</groupId>
+      <artifactId>Java-WebSocket</artifactId>
+      <version>1.3.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.62</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- swagger2-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${swagger.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>io.swagger</groupId>
+          <artifactId>swagger-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>io.swagger</groupId>
+          <artifactId>swagger-models</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--防止进入swagger页面报类型转换错误，排除2.9.2中的引用，手动增加1.5.21版本-->
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>1.5.21</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-models</artifactId>
+      <version>1.5.21</version>
+    </dependency>
+
+    <!-- swagger2-UI-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${swagger.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>red-chain-node1</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <!-- 将resources目录下的配置文件编译进classes文件 -->
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
+
+</project>
